@@ -51,9 +51,7 @@ public class User implements Serializable{
 
   
 
-  	@JsonIgnore
-	@ElementCollection
-	private List<Long> followedBy;
+ 
 
   public boolean getState() {
 	    return state;
