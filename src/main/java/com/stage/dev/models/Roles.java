@@ -19,6 +19,7 @@ public class Roles implements Serializable {
   @Column(length = 20)
   private ERole name;
 
+  
   @ManyToMany
   List<User> users;
 }
