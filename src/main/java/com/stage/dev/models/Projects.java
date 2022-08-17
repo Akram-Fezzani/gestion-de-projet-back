@@ -36,6 +36,8 @@ public class Projects {
 	  private boolean state;
 	  public int advancement;
 
+	  public Projects() {
+	  }
 	  
 	  @JsonIgnore
 	  @OneToMany(mappedBy="project", fetch=FetchType.LAZY, cascade=CascadeType.ALL)

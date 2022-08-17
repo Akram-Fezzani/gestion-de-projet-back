@@ -29,6 +29,9 @@ public class Report {
 	  private Date postDate;
 	  private User postedBy;
 	  
+	  public Report() {
+	  }
+	  
 	  @ManyToOne
 	  private Projects project;
 	  

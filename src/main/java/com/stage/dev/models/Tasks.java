@@ -40,6 +40,9 @@ public class Tasks {
 	  private int advancement;
 	  
 	  
+	  public Tasks() {
+	  }
+	  
 	  @ManyToOne
 	  private Projects project;
 	  
