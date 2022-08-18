@@ -12,7 +12,6 @@ import com.stage.dev.models.User;
 import com.stage.dev.repository.ProjectRepository;
 import com.stage.dev.repository.TasksRepository;
 import com.stage.dev.repository.UserRepository;
-import com.stage.dev.serviceInterface.IRoleService;
 import com.stage.dev.serviceInterface.ITasksService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -132,9 +131,6 @@ public class TasksServiceImpl implements ITasksService {
 		}
 		return  tasksByEmployee;
 	}
-	
-	
-	
 	
 
 }
