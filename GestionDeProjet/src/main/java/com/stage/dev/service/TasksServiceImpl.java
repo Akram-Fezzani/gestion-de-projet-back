@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.stage.dev.models.Projects;
 import com.stage.dev.models.Tasks;
 import com.stage.dev.repository.TasksRepository;
 import com.stage.dev.serviceInterface.IRoleService;
@@ -51,4 +52,14 @@ public class TasksServiceImpl implements ITasksService {
 		tasksRepository.deleteById(taskId);
 		
 	}
+	
+	
+	@Override
+	public Tasks updateState(Long taskId, boolean state) {
+		Tasks task = tasksRepository.getById(taskId);
+		task.setState(state);
+		
+			return tasksRepository.save(task);
+	}
+	
 }

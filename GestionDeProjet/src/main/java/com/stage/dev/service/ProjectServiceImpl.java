@@ -53,4 +53,27 @@ public class ProjectServiceImpl implements IProjectService{
 		projectRepository.deleteById(projectId);
 		
 	}
+	
+	
+	@Override
+	public Projects updateState(Long projectId, boolean state) {
+		Projects project = projectRepository.getById(projectId);
+		project.setState(state);
+			return projectRepository.save(project);
+	}
+	
+	
+	@Override
+	public Projects updateAdvancement(Long projectId, int advancement) {
+		Projects project = projectRepository.getById(projectId);
+		project.setAdvancement(advancement);
+		return projectRepository.save(project);
+	}
+	
+	@Override
+	public Projects affectManager(Long projectId,Long managerId) {
+		Projects project = projectRepository.getById(projectId);
+		project.setManager(managerId);
+		return projectRepository.save(project);
+	}
 }

@@ -14,4 +14,10 @@ public interface IProjectService {
 	Projects updateProject(Projects project, Long projectID);
 
 	void deleteProjectById(Long projectID);
+	
+	 Projects updateAdvancement(Long projectId, int advancement);
+	 
+	 Projects updateState(Long projectId, boolean state);
+	 
+	 Projects affectManager(Long projectId,Long managerId);
 }

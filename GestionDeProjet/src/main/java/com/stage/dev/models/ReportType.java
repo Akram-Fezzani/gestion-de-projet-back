@@ -22,5 +22,8 @@ public class ReportType {
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;
 	  private String type;
+	  
+	  public ReportType() {
+	  }
 
 }

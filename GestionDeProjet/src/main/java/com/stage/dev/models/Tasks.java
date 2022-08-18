@@ -4,10 +4,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +38,21 @@ public class Tasks {
 	  private String name;
 	  private boolean state;
 	  private int advancement;
-	 
+	  
+	  
+	  public Tasks() {
+	  }
+	  
+	  @ManyToOne
+	  private Projects project;
+	  
+	  @OneToOne
+	  private TaskType TaskType;
+	  
+	  
+		@JsonIgnore
+		@ElementCollection
+		private List<String> fileName;
+
 
 }

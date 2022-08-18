@@ -2,6 +2,7 @@ package com.stage.dev.serviceInterface;
 
 import java.util.List;
 
+import com.stage.dev.models.Projects;
 import com.stage.dev.models.Tasks;
 
 
@@ -16,4 +17,7 @@ public interface ITasksService {
 	Tasks updateTask(Tasks tasks, Long taskID);
 
 	void deleteTaskById(Long taskID);
+	
+	Tasks updateState(Long taskID, boolean state);
+
 }
