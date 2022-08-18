@@ -19,5 +19,12 @@ public interface ITasksService {
 	void deleteTaskById(Long taskID);
 	
 	Tasks updateState(Long taskID, boolean state);
+	
+	Tasks updateAdvancement(Long projectId, int advancement);
 
+	Tasks affectTaskToProject(Long taskId, Long projectId);
+	
+	void removeEmployeeFromTask(Long employeeId, Long taskId);
+	
+	void affectemployeetotask(Long employeeId, Long taskId);
 }

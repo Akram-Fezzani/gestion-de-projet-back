@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.stage.dev.models.Projects;
 import com.stage.dev.models.Tasks;
+import com.stage.dev.models.User;
+import com.stage.dev.repository.ProjectRepository;
 import com.stage.dev.repository.TasksRepository;
+import com.stage.dev.repository.UserRepository;
 import com.stage.dev.serviceInterface.IRoleService;
 import com.stage.dev.serviceInterface.ITasksService;
 
@@ -24,7 +27,14 @@ public class TasksServiceImpl implements ITasksService {
 	@Autowired
 	TasksRepository tasksRepository;
 	
+
+	@Autowired
+	ProjectRepository projectRepository;
 	
+	
+	
+	@Autowired
+	UserRepository userRepository;
 	
 	
 	@Override
@@ -60,6 +70,53 @@ public class TasksServiceImpl implements ITasksService {
 		task.setState(state);
 		
 			return tasksRepository.save(task);
+	}
+	
+	
+	@Override
+	public Tasks updateAdvancement(Long taskId, int advancement) {
+		Tasks task = tasksRepository.getById(taskId);
+		task.setAdvancement(advancement);
+		return tasksRepository.save(task);
+	}
+	
+	
+	public Tasks affectTaskToProject(Long taskId, Long projectId){
+		Tasks task = tasksRepository.getById(taskId);
+		Projects project = projectRepository.getById(projectId);
+		task.setProject(project);
+		return tasksRepository.save(task);
+
+	}
+	
+	
+	@Override
+	public void affectemployeetotask(Long employeeId, Long taskId){
+		User employee= new User();
+		employee = userRepository.findById(employeeId).get();
+		Tasks task = new Tasks(); 
+		task= tasksRepository.findById(taskId).get();
+		
+		if ((task.getEmployee().contains(employeeId)==false))
+		{
+			task.getEmployee().add(employeeId);
+			tasksRepository.save(task);
+		}
+	}
+	
+	
+	
+	@Override
+	public void removeEmployeeFromTask(Long employeeId, Long taskId){
+		User employee= new User();
+		employee = userRepository.findById(employeeId).get();
+		Tasks task = new Tasks(); 
+		task= tasksRepository.findById(taskId).get();
+		if ((task.getEmployee().contains(employeeId)==true))
+		{
+			task.getEmployee().remove(employeeId);
+			tasksRepository.save(task);
+		}
 	}
 	
 }
