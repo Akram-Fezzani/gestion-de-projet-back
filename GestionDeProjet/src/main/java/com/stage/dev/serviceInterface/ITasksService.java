@@ -27,4 +27,6 @@ public interface ITasksService {
 	void removeEmployeeFromTask(Long employeeId, Long taskId);
 	
 	void affectemployeetotask(Long employeeId, Long taskId);
+	
+	List<Tasks> tasksByEmployee(Long employeeId);
 }

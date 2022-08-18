@@ -103,4 +103,13 @@ public class TasksController {
      	public void  removeEmployeeFromTask(@PathVariable Long employeeId,@PathVariable Long taskId){
     	   tasksService.removeEmployeeFromTask(employeeId, taskId);
      	}
+       
+
+         
+       
+       @GetMapping("/getTasksByEmployee")
+       @ResponseBody
+       List<Tasks> tasksByEmployee(Long employeeId){
+    	   return tasksService.tasksByEmployee(employeeId);
+       }
 }

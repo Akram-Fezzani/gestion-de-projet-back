@@ -1,5 +1,6 @@
 package com.stage.dev.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,4 +120,21 @@ public class TasksServiceImpl implements ITasksService {
 		}
 	}
 	
+	
+	public List<Tasks> tasksByEmployee(Long employeeId){
+		List<Tasks> tasks =tasksRepository.findAll();
+		List<Tasks> tasksByEmployee =new  ArrayList<Tasks>();
+		for (Tasks task : tasks){
+			if ((task.getEmployee().contains(employeeId)==true))
+			{
+				tasksByEmployee.add(task);
+			}
+		}
+		return  tasksByEmployee;
+	}
+	
+	
+	
+	
+
 }
