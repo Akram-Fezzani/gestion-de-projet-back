@@ -20,7 +20,6 @@ public class Roles implements Serializable {
   private ERole name;
 
   
-  @ManyToMany
-  List<User> users;
+
 }
 

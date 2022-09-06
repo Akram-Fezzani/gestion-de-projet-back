@@ -34,7 +34,6 @@ public class Tasks {
 	  private Date estimatedEndDate;
 	  private Date endDate;
 	  private float maxCost;
-	  private int maxNumberOfEmployees;
 	  private String name;
 	  private boolean state;
 	  private int advancement;
@@ -43,6 +42,8 @@ public class Tasks {
 	  public Tasks() {
 	  }
 	  
+	  
+	  @JsonIgnore
 	  @ManyToOne
 	  private Projects project;
 	  
@@ -53,6 +54,10 @@ public class Tasks {
 		@JsonIgnore
 		@ElementCollection
 		private List<String> fileName;
+		
+		@JsonIgnore
+		@ElementCollection
+		private List<Long> employee;
 
 
 }

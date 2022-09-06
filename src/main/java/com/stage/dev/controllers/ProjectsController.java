@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stage.dev.models.Projects;
-
+import com.stage.dev.models.User;
 import com.stage.dev.serviceInterface.IProjectService;
 
 import io.swagger.annotations.Api;
@@ -59,4 +60,38 @@ public class ProjectsController {
     	projectService.deleteProjectById(projectID);
     
     }
+    
+    
+    @ApiOperation(value = "Update State")
+    @RequestMapping(value = "/updateState/{projectID}/{state}", method = RequestMethod.POST)
+   	@ResponseBody
+   	Projects updateState(@PathVariable Long projectID,@PathVariable boolean state ){
+       	return projectService.updateState(projectID, state);
+   	}
+    
+    
+    
+    @ApiOperation(value = "Update advancement")
+    @RequestMapping(value = "/updateAdvancement/{projectID}/{advancement}", method = RequestMethod.POST)
+   	@ResponseBody
+   	Projects updateAdvancement(@PathVariable Long projectID,@PathVariable int advancement){
+       	return projectService.updateAdvancement(projectID, advancement);
+   	}
+    
+    
+	@ApiOperation(value = "get project")
+	@GetMapping("getProjectById/{projectID}")
+	@ResponseBody
+	Projects getUserById(@PathVariable Long projectID){
+		return projectService.getProjectById(projectID);
+	}
+    
+    
+    
+    @ApiOperation(value = "Affect Manager")
+    @RequestMapping(value = "/affectManager/{projectID}/{managerId}", method = RequestMethod.POST)
+   	@ResponseBody
+   	Projects affectManager(@PathVariable Long projectID,@PathVariable Long managerId){
+       	return projectService.affectManager(projectID, managerId);
+   	}
 }

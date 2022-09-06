@@ -22,6 +22,8 @@ import com.stage.dev.repository.UserRepository;
 import com.stage.dev.security.jwt.JwtUtils;
 import com.stage.dev.security.services.UserDetailsImpl;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -39,6 +41,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
+@Slf4j
+
 public class AuthController {
     @Autowired
     private JavaMailSender sender;
@@ -60,6 +64,7 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    	log.info(" xxxxxxxxxxxxxxxxxx ");
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -76,6 +81,7 @@ public class AuthController {
                     userDetails.getUsername(),
                     userDetails.getEmail(),
                     roles));
+    		
         }
         else
         {

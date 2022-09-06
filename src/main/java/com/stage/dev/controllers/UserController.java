@@ -58,7 +58,7 @@ public class UserController {
 		return userService.updateUser(user, userID);
 	}
 
-    @GetMapping("/getRole")
+    @GetMapping("/getAllUsers")
     @ResponseBody
     public List<User> findAll() {
         return userService.findAll();
